@@ -15,7 +15,7 @@ public class Bird : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-                Debug.Log("jump");
+                Debug.Log("Jump");
         }
     }
 }
