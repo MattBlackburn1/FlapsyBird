@@ -1,21 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Rigidbody2D myRigidbody;
+    public float flapStrength;
+    public GameManager logic;
+    public bool birdIsAlive = true;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && birdIsAlive)
         {
-                Debug.Log("Jump");
+            myRigidbody.velocity = Vector2.up * flapStrength;
         }
+    }
+    
+    private void OnCollisionEnter2D()
+    {
+        logic.GameOver();
+        birdIsAlive = false;
     }
 }
